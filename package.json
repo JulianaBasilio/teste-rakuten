@@ -1,0 +1,19 @@
+{
+  "name": "teste_rakuten",
+  "version": "1.0.0",
+  "description": "Teste Rakuten",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^3.4.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Juliana Basilio",
+  "license": "ISC"
+}
