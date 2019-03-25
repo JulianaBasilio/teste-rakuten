@@ -1,14 +1,25 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var rename = require('gulp-rename');
+var gulp    = require('gulp');
+var sass    = require('gulp-sass');
+var plumber = require('gulp-plumber');
+var uglify  = require('gulp-uglify');
+var concat  = require('gulp-concat');
+var rename  = require('gulp-rename');
 
 // Variables
 
-//Sass Source
+//Sources
 var scssFiles = './src/scss/style.scss';
+var js_dev    = [
+    './src/js/vendor/jquery-3.3.1.min.js',
+    './src/js/vendor/bootstrap.min.js',
+    './src/js/vendor/slick.min.js',
+    './src/js/main.js'
+];
 
 //CSS destination
-var cssDest = './src/css';
+var cssDest      = './src/css';
+var js_dist      = "./dist/js";
+var js_dist_name = "bundle.min.js"
 
 //Options for development
 var sassDevOptions = {
@@ -20,9 +31,8 @@ var sassProdOptions = {
     outputStyle: 'compressed'
 }
 
-
 // Default task - Run with command 'gulp'
-gulp.task('default', ['sassdev', 'sassprod', 'watch']);
+gulp.task('default', ['sassdev', 'sassprod', 'scripts', 'watch']);
 
 //Task 'sassdev' - Run with command 'gulp sassdev'
 gulp.task('sassdev', function() {
@@ -37,6 +47,14 @@ gulp.task('sassprod', function() {
     .pipe(sass(sassProdOptions).on('error', sass.logError))
     .pipe(rename('style.min.css'))
     .pipe(gulp.dest(cssDest));
+});
+
+// Scripts Task
+gulp.task('scripts', function() {
+    return gulp.src(js_dev)
+        .pipe(uglify())
+        .pipe(concat(js_dist_name))
+        .pipe(gulp.dest(js_dist));
 });
 
 //Task 'watch' - Run with command 'gulp watch'

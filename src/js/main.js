@@ -32,5 +32,4 @@ $(document).ready(function(){
         focusOnSelect: true,
         vertical: true
       });
-    
 });
