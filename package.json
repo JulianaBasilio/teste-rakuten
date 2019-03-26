@@ -4,7 +4,7 @@
   "description": "Teste Rakuten",
   "main": "index.js",
   "dependencies": {
-    "bootstrap": "^3.4.1"
+    
   },
   "devDependencies": {
     "gulp": "^3.9.1",
